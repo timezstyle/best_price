@@ -2,9 +2,22 @@
 * This is demo project to find best price of shops.
 * Required GO 1.9 for [dep](https://github.com/golang/dep) (dependency tool)
 
-## Run at local
-```shell
+## How to run this project
+```
+# set your GOPATH (optional)
+export GOPATH=~/go
+
+# clone project
+go get github.com/timezstyle/best_price
+
+# cd to project directory
+cd $GOPATH/src/github.com/timezstyle/best_price
+
+# listen at :3000
 go run main.go
+
+# to see more detail (optional)
+go run main.go -h
 ```
 
 ## Find Best Price

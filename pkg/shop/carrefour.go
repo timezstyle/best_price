@@ -3,6 +3,7 @@ package shop
 import (
 	"context"
 	"encoding/json"
+	"net/http"
 	"net/url"
 	"strconv"
 
@@ -34,7 +35,9 @@ func (c *Carrefour) Find(ctx context.Context, productName string) (ret []schema.
 	q.Set("minPrice", "")
 	q.Set("maxPrice", "")
 
-	b, err = search(ctx, method, path, "application/x-www-form-urlencoded", q.Encode())
+	h := http.Header{}
+	h.Set("Content-Type", "application/x-www-form-urlencoded")
+	b, _, err = search(ctx, method, path, q.Encode(), &h)
 	if err != nil {
 		return
 	}

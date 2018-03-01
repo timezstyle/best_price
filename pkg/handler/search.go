@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"reflect"
 	"sort"
 	"strconv"
 	"sync"
@@ -28,7 +29,7 @@ func GetPositiveIntOrDefault(input string, def int) (ret int) {
 func find(ctx context.Context, shop schema.Shop, productName string, resultCh chan []schema.Product) {
 	products, err := shop.Find(ctx, productName)
 	if err != nil {
-		log.Println(err)
+		log.Println(reflect.TypeOf(shop), err)
 	}
 	resultCh <- products
 }

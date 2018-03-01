@@ -14,11 +14,13 @@ import (
 
 func main() {
 	var (
-		port       string
-		reqTimeout time.Duration
+		port            string
+		reqTimeout      time.Duration
+		seleniumHubAddr string
 	)
 	flag.StringVar(&port, "port", ":3000", "listen port")
 	flag.DurationVar(&reqTimeout, "request_timeout", 3*time.Second, "request's timeout when send to shop")
+	flag.StringVar(&seleniumHubAddr, "selenium_hub_addr", "http://localhost:4444/wd/hub", "selenium hub addr")
 	flag.Parse()
 
 	root := handler.Root{
@@ -27,6 +29,7 @@ func main() {
 			// add shop here
 			shop.NewRtMart(),
 			shop.NewCarrefour(),
+			shop.NewShopee(seleniumHubAddr),
 		},
 		ReqTimeout: reqTimeout,
 	}

@@ -34,7 +34,7 @@ func (c *RtMart) Find(ctx context.Context, productName string) (ret []schema.Pro
 	q.Set("p_data_num", "30")
 	q.Set("usort", "prod_selling_price,ASC")
 
-	b, err = search(ctx, method, path+q.Encode(), "", "")
+	b, _, err = search(ctx, method, path+q.Encode(), "", nil)
 	if err != nil {
 		return
 	}

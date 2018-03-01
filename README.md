@@ -22,11 +22,11 @@ go run main.go -h
 
 ## Find Best Price
 
-GET /search?productName={productName}
+GET /search?product_name={productName}&offset=0&limit=30
 
 > for example: (To find best pen price.)
 ```shell
-curl http://localhost:3000/search?productName=pen
+curl 'http://localhost:3000/search?product_name=pen&offset=0&limit=30'
 ```
 
 ## Run test

@@ -28,3 +28,12 @@ GET /search?productName={productName}
 ```shell
 curl http://localhost:3000/search?productName=pen
 ```
+
+## Run test
+```shell
+# test all
+GOCACHE=off go test -v ./...
+
+# test Carrefour shop
+GOCACHE=off go test -v ./... -run Test*/Carrefour
+```

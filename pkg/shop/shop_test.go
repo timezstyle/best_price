@@ -3,29 +3,30 @@ package shop
 import (
 	"context"
 	"testing"
+
+	"github.com/timezstyle/best_price/pkg/schema"
 )
 
-func TestRtMart_Find(t *testing.T) {
-	c := NewRtMart()
+func TestShop_Find(t *testing.T) {
 	type args struct {
 		ctx         context.Context
 		productName string
 	}
 	tests := []struct {
 		name    string
-		c       *RtMart
+		c       schema.Shop
 		args    args
 		wantErr bool
 	}{
 		// TODO: Add test cases.
-		{"find pen", c, args{context.Background(), "pen"}, false},
+		{"Carrefour find pen", NewCarrefour(), args{context.Background(), "pen"}, false},
+		{"RtMart find pen", NewRtMart(), args{context.Background(), "pen"}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			c := &RtMart{}
-			gotRet, err := c.Find(tt.args.ctx, tt.args.productName)
+			gotRet, err := tt.c.Find(tt.args.ctx, tt.args.productName)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("RtMart.Find() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("Shop.Find() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			for i := range gotRet {

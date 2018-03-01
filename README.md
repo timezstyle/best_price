@@ -5,7 +5,7 @@
 
 ## How to run this project
 ```
-# prepare selenium (make sure docker and docker-compose are already istalled)
+# prepare selenium (make sure docker and docker-compose are already installed)
 docker-compose up -d
 
 # set your GOPATH (optional)

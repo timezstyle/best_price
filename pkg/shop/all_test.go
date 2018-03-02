@@ -22,6 +22,7 @@ func TestShop_Find(t *testing.T) {
 		{"Carrefour find pen", NewCarrefour(), args{context.Background(), "pen"}, false},
 		{"RtMart find pen", NewRtMart(), args{context.Background(), "pen"}, false},
 		{"Shopee find pen", NewShopee("http://localhost:4444/wd/hub"), args{context.Background(), "pen"}, false},
+		{"Taobao find pen", NewTaobao(), args{context.Background(), "pen"}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

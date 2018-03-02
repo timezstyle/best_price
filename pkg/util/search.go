@@ -1,4 +1,4 @@
-package shop
+package util
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 	"golang.org/x/net/context/ctxhttp"
 )
 
-func search(ctx context.Context, method, url, body string, header *http.Header) (ret []byte, respHeader http.Header, err error) {
+func Search(ctx context.Context, method, url, body string, header *http.Header) (ret []byte, respHeader http.Header, err error) {
 	var (
 		req  *http.Request
 		resp *http.Response

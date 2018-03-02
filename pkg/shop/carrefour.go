@@ -8,6 +8,7 @@ import (
 	"strconv"
 
 	"github.com/timezstyle/best_price/pkg/schema"
+	"github.com/timezstyle/best_price/pkg/util"
 )
 
 type Carrefour struct {
@@ -37,7 +38,7 @@ func (c *Carrefour) Find(ctx context.Context, productName string) (ret []schema.
 
 	h := http.Header{}
 	h.Set("Content-Type", "application/x-www-form-urlencoded")
-	b, _, err = search(ctx, method, path, q.Encode(), &h)
+	b, _, err = util.Search(ctx, method, path, q.Encode(), &h)
 	if err != nil {
 		return
 	}

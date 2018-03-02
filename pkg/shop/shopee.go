@@ -10,6 +10,7 @@ import (
 
 	"github.com/tebeka/selenium"
 	"github.com/timezstyle/best_price/pkg/schema"
+	"github.com/timezstyle/best_price/pkg/util"
 )
 
 type Shopee struct {
@@ -66,7 +67,7 @@ func (c *Shopee) Find(ctx context.Context, productName string) (ret []schema.Pro
 	q.Set("limit", "50")
 
 	referer := path + q.Encode()
-	b, _, err = search(ctx, method, referer, "", nil)
+	b, _, err = util.Search(ctx, method, referer, "", nil)
 	if err != nil {
 		return
 	}
@@ -93,7 +94,7 @@ func (c *Shopee) Find(ctx context.Context, productName string) (ret []schema.Pro
 	h.Set("Cookie", c.cookie)
 	h.Set("x-csrftoken", c.token)
 	h.Set("referer", "https://shopee.tw/search/?"+q.Encode())
-	b, _, err = search(ctx, "POST", "https://shopee.tw/api/v1/items/", string(itemsJSON), &h)
+	b, _, err = util.Search(ctx, "POST", "https://shopee.tw/api/v1/items/", string(itemsJSON), &h)
 	if err != nil {
 		return
 	}

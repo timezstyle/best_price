@@ -77,7 +77,10 @@ func search(shops []schema.Shop, timeout time.Duration) http.HandlerFunc {
 		}
 
 		w.Header().Set("Content-Type", "application/json")
-		b, _ := json.Marshal(results)
+		b, _ := json.Marshal(map[string]interface{}{
+			"total":   resultsLen,
+			"results": results,
+		})
 		w.Write(b)
 	})
 }

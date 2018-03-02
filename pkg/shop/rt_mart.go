@@ -9,6 +9,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/timezstyle/best_price/pkg/schema"
+	"github.com/timezstyle/best_price/pkg/util"
 )
 
 type RtMart struct {
@@ -34,7 +35,7 @@ func (c *RtMart) Find(ctx context.Context, productName string) (ret []schema.Pro
 	q.Set("p_data_num", "30")
 	q.Set("usort", "prod_selling_price,ASC")
 
-	b, _, err = search(ctx, method, path+q.Encode(), "", nil)
+	b, _, err = util.Search(ctx, method, path+q.Encode(), "", nil)
 	if err != nil {
 		return
 	}

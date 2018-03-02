@@ -30,6 +30,7 @@ func main() {
 			shop.NewRtMart(),
 			shop.NewCarrefour(),
 			shop.NewShopee(seleniumHubAddr),
+			shop.NewTaobao(),
 		},
 		ReqTimeout: reqTimeout,
 	}
